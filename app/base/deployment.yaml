@@ -20,7 +20,7 @@ apiVersion: charts.kubecost.com/v1alpha1
 kind: CostAnalyzer
 metadata:
   name: costanalyzer-sample
-  namespace: kubecost
+  namespace: kubecost1
 spec:
   affinity: {}
   awsstore:
@@ -138,7 +138,7 @@ spec:
             - property: cluster
               value: 'cluster-one,cluster*'
             - property: namespace
-              value: kubecost
+              value: kubecost1
           idle: separate
           rate: cumulative
           title: Example Saved Report 0
@@ -150,7 +150,7 @@ spec:
             - property: label
               value: 'app:cost*,environment:kube*'
             - property: namespace
-              value: kubecost
+              value: kubecost1
           idle: share
           rate: monthly
           title: Example Saved Report 1
@@ -271,7 +271,7 @@ spec:
               - property: cluster
                 value: 'cluster-one,cluster*'
               - property: namespace
-                value: kubecost
+                value: kubecost1
             idle: separate
             rate: cumulative
             title: Example Saved Report 0
@@ -283,7 +283,7 @@ spec:
               - property: label
                 value: 'app:cost*,environment:kube*'
               - property: namespace
-                value: kubecost
+                value: kubecost1
             idle: share
             rate: monthly
             title: Example Saved Report 1
@@ -868,7 +868,7 @@ spec:
               - property: cluster
                 value: 'cluster-one,cluster*'
               - property: namespace
-                value: kubecost
+                value: kubecost1
             idle: separate
             rate: cumulative
             title: Example Saved Report 0
@@ -880,7 +880,7 @@ spec:
               - property: label
                 value: 'app:cost*,environment:kube*'
               - property: namespace
-                value: kubecost
+                value: kubecost1
             idle: share
             rate: monthly
             title: Example Saved Report 1
@@ -1021,7 +1021,7 @@ spec:
                 - property: cluster
                   value: 'cluster-one,cluster*'
                 - property: namespace
-                  value: kubecost
+                  value: kubecost1
               idle: separate
               rate: cumulative
               title: Example Saved Report 0
@@ -1033,7 +1033,7 @@ spec:
                 - property: label
                   value: 'app:cost*,environment:kube*'
                 - property: namespace
-                  value: kubecost
+                  value: kubecost1
               idle: share
               rate: monthly
               title: Example Saved Report 1
@@ -1580,7 +1580,7 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: costanalyzer-route
-  namespace: kubecost
+  namespace: kubecost1
 spec:
   host: costanalyzer-route-kubecost.apps.aabualrucummins.wbcq.p1.openshiftapps.com
   to:
