@@ -23,6 +23,32 @@ spec: {}
 
 ---
 
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: kubecost
+  name: argocd-workaround993-role
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-workaround993-rolebinding
+  namespace: kubecost
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+roleRef:
+  kind: Role 
+  name: argocd-workaround993-role
+  apiGroup: rbac.authorization.k8s.io
+
+
+---
 apiVersion: charts.kubecost.com/v1alpha1
 kind: CostAnalyzer
 metadata:
