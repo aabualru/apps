@@ -20,7 +20,7 @@ apiVersion: charts.kubecost.com/v1alpha1
 kind: CostAnalyzer
 metadata:
   name: costanalyzer-sample
-  namespace: kubecost1
+  namespace: kubecost
 spec:
   affinity: {}
   awsstore:
@@ -29,7 +29,7 @@ spec:
     useAwsStore: false
   clusterController:
     enabled: false
-    image: 'gcr.io/kubecost1/cluster-controller:v0.12.0'
+    image: 'gcr.io/kubecost/cluster-controller:v0.12.0'
     imagePullPolicy: Always
     kubescaler:
       defaultResizeAll: false
@@ -138,7 +138,7 @@ spec:
             - property: cluster
               value: 'cluster-one,cluster*'
             - property: namespace
-              value: kubecost1
+              value: kubecost
           idle: separate
           rate: cumulative
           title: Example Saved Report 0
@@ -150,7 +150,7 @@ spec:
             - property: label
               value: 'app:cost*,environment:kube*'
             - property: namespace
-              value: kubecost1
+              value: kubecost
           idle: share
           rate: monthly
           title: Example Saved Report 1
@@ -271,7 +271,7 @@ spec:
               - property: cluster
                 value: 'cluster-one,cluster*'
               - property: namespace
-                value: kubecost1
+                value: kubecost
             idle: separate
             rate: cumulative
             title: Example Saved Report 0
@@ -283,7 +283,7 @@ spec:
               - property: label
                 value: 'app:cost*,environment:kube*'
               - property: namespace
-                value: kubecost1
+                value: kubecost
             idle: share
             rate: monthly
             title: Example Saved Report 1
@@ -476,7 +476,7 @@ spec:
       seccompProfile:
         type: RuntimeDefault
     enabled: true
-    image: gcr.io/kubecost1/frontend
+    image: gcr.io/kubecost/frontend
     imagePullPolicy: Always
     ipv6:
       enabled: true
@@ -531,7 +531,7 @@ spec:
     etlReadOnlyMode: false
     etlWeeklyStoreDurationWeeks: 53
     extraArgs: []
-    image: gcr.io/kubecost1/cost-model
+    image: gcr.io/kubecost/cost-model
     imagePullPolicy: Always
     livenessProbe:
       enabled: false
@@ -573,7 +573,7 @@ spec:
     enabled: false
     extraArgs: []
     healthCheckProbes: {}
-    image: 'gcr.io/kubecost1/kubecost-network-costs:v0.16.8'
+    image: 'gcr.io/kubecost/kubecost-network-costs:v0.16.8'
     imagePullPolicy: Always
     nodeSelector: {}
     podMonitor:
@@ -868,7 +868,7 @@ spec:
               - property: cluster
                 value: 'cluster-one,cluster*'
               - property: namespace
-                value: kubecost1
+                value: kubecost
             idle: separate
             rate: cumulative
             title: Example Saved Report 0
@@ -880,7 +880,7 @@ spec:
               - property: label
                 value: 'app:cost*,environment:kube*'
               - property: namespace
-                value: kubecost1
+                value: kubecost
             idle: share
             rate: monthly
             title: Example Saved Report 1
@@ -1021,7 +1021,7 @@ spec:
                 - property: cluster
                   value: 'cluster-one,cluster*'
                 - property: namespace
-                  value: kubecost1
+                  value: kubecost
               idle: separate
               rate: cumulative
               title: Example Saved Report 0
@@ -1033,7 +1033,7 @@ spec:
                 - property: label
                   value: 'app:cost*,environment:kube*'
                 - property: namespace
-                  value: kubecost1
+                  value: kubecost
               idle: share
               rate: monthly
               title: Example Saved Report 1
@@ -1497,7 +1497,7 @@ spec:
       auth:
         password: admin
       enabled: false
-      initImage: gcr.io/kubecost1/sql-init
+      initImage: gcr.io/kubecost/sql-init
       initImagePullPolicy: Always
       installLocal: true
       persistentVolume:
@@ -1580,7 +1580,7 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: costanalyzer-route
-  namespace: kubecost1
+  namespace: kubecost
 spec:
   host: costanalyzer-route-kubecost.apps.aabualrucummins.wbcq.p1.openshiftapps.com
   to:
