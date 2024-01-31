@@ -531,7 +531,7 @@ spec:
     etlReadOnlyMode: false
     etlWeeklyStoreDurationWeeks: 53
     extraArgs: []
-    image: gcr.io/kubecost/cost-model
+    image: public.ecr.aws/kubecost/cost-model
     imagePullPolicy: Always
     livenessProbe:
       enabled: false
