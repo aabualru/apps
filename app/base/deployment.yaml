@@ -476,7 +476,7 @@ spec:
       seccompProfile:
         type: RuntimeDefault
     enabled: true
-    image: gcr.io/kubecost/frontend
+    image: public.ecr.aws/kubecost/frontend
     imagePullPolicy: Always
     ipv6:
       enabled: true
