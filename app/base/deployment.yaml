@@ -11,7 +11,6 @@ spec:
   name: kubecost
   source: community-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: kubecost-operator.v1.107.1
 
 ---
 apiVersion: charts.kubecost.com/v1alpha1
