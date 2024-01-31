@@ -41,12 +41,11 @@ metadata:
   namespace: kubecost
 subjects:
 - kind: ServiceAccount
-  name: openshift-gitops-argocd-application-controller
+  name: system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller
 roleRef:
   kind: Role 
   name: argocd-workaround993-role
   apiGroup: rbac.authorization.k8s.io
-
 
 ---
 apiVersion: charts.kubecost.com/v1alpha1
