@@ -3,8 +3,29 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec: {}
 status: {}
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: system:openshift:scc:openshift-gitops-argocd-application-controller
+  namespace: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:openshift:scc:openshift-gitops-argocd-application-controller
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: dynatrace
 
 ---
 # Source: dynatrace-operator/templates/Common/webhook/poddisruptionbudget-webhook.yaml
@@ -14,6 +35,8 @@ kind: PodDisruptionBudget
 metadata:
   name: dynatrace-webhook
   namespace: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   minAvailable: 1
   selector:
@@ -39,6 +62,8 @@ kind: ServiceAccount
 metadata:
   name: dynatrace-activegate
   namespace: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   labels:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
@@ -63,6 +88,8 @@ kind: ServiceAccount
 metadata:
   name: dynatrace-edgeconnect
   namespace: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   labels:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
@@ -87,6 +114,8 @@ kind: ServiceAccount
 metadata:
   name: dynatrace-kubernetes-monitoring
   namespace: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   labels:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
@@ -111,6 +140,8 @@ kind: ServiceAccount
 metadata:
   name: dynatrace-dynakube-oneagent
   namespace: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   labels:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
@@ -136,6 +167,8 @@ kind: ServiceAccount
 metadata:
   name: dynatrace-operator
   namespace: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   labels:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
@@ -160,6 +193,8 @@ kind: ServiceAccount
 metadata:
   name: dynatrace-webhook
   namespace: dynatrace
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   labels:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
@@ -171,6 +206,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.13.0
+    argocd.argoproj.io/sync-wave: "3"
   name: dynakubes.dynatrace.com
 spec:
   conversion:
@@ -3849,6 +3885,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.13.0
+    argocd.argoproj.io/sync-wave: "3"
   name: edgeconnects.dynatrace.com
 spec:
   group: dynatrace.com
@@ -4478,6 +4515,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: activegate
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 rules:
   - apiGroups:
       - ""
@@ -4562,6 +4601,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: operator
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 rules:
   - apiGroups:
       - ""
@@ -4656,6 +4697,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 rules:
   - apiGroups:
       - ""
@@ -4730,6 +4773,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: activegate
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -4748,6 +4793,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: operator
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 subjects:
   - kind: ServiceAccount
     name: dynatrace-operator
@@ -4766,6 +4813,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 subjects:
   - kind: ServiceAccount
     name: dynatrace-webhook
@@ -4798,6 +4847,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: operator
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 rules:
   - apiGroups:
       - dynatrace.com
@@ -4970,6 +5021,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 rules:
   - apiGroups:
       - ""
@@ -5032,6 +5085,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: operator
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 subjects:
   - kind: ServiceAccount
     name: dynatrace-operator
@@ -5050,6 +5105,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 subjects:
   - kind: ServiceAccount
     name: dynatrace-webhook
@@ -5082,6 +5139,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   selector:
     app.kubernetes.io/name: dynatrace-operator
@@ -5115,6 +5174,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: operator
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   replicas: 1
   revisionHistoryLimit: 1
@@ -5246,6 +5307,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   replicas: 2
   revisionHistoryLimit: 1
@@ -5395,6 +5458,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 webhooks:
   - name: webhook.pod.dynatrace.com
     reinvocationPolicy: IfNeeded
@@ -5457,6 +5522,8 @@ metadata:
     app.kubernetes.io/name: dynatrace-operator
     app.kubernetes.io/version: "0.15.0"
     app.kubernetes.io/component: webhook
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 webhooks:
   - admissionReviewVersions:
       - v1

@@ -3,11 +3,12 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: kubecost
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec: {}
 status: {}
 
 ---
-
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
@@ -17,6 +18,8 @@ metadata:
     operators.coreos.com/kubecost.openshift-operators: ""
   name: kubecost
   namespace: openshift-operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   channel: alpha
   installPlanApproval: Automatic
@@ -31,6 +34,8 @@ kind: CostAnalyzer
 metadata:
   name: costanalyzer-sample
   namespace: kubecost
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   affinity: {}
   awsstore:
@@ -1591,6 +1596,8 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: costanalyzer-route
   namespace: kubecost
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   host: costanalyzer-route-kubecost.apps.aabualrucummins.wbcq.p1.openshiftapps.com
   to:
