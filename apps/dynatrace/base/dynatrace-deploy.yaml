@@ -1,3 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: kubecost
+spec: {}
+status: {}
+
 ---
 # Source: dynatrace-operator/templates/Common/webhook/poddisruptionbudget-webhook.yaml
 # v1 version supported since k8s 1.21
