@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   creationTimestamp: null
-  name: kubecost
+  name: dynatrace
 spec: {}
 status: {}
 
