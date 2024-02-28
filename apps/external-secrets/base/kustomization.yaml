@@ -6,3 +6,4 @@ resources:
   - operator-config.yaml
   - secret-store.yaml
   - secret.yaml
+  - external-secrets-operator.yaml
