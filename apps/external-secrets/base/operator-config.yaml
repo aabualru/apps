@@ -2,116 +2,117 @@ apiVersion: operator.external-secrets.io/v1alpha1
 kind: OperatorConfig
 metadata:
   name: cluster
-  namespace: external-secrets
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  namespace: openshift-operators
 spec:
-  affinity: {}
   certController:
-    affinity: {}
-    create: true
-    deploymentAnnotations: {}
-    extraArgs: {}
-    extraEnv: []
-    fullnameOverride: ''
-    image:
-      pullPolicy: IfNotPresent
-      repository: ghcr.io/external-secrets/external-secrets
-      tag: ''
-    imagePullSecrets: []
-    nameOverride: ''
     nodeSelector: {}
-    podAnnotations: {}
+    imagePullSecrets: []
+    requeueInterval: 5m
     podLabels: {}
-    podSecurityContext: {}
-    priorityClassName: ''
+    resources: {}
+    fullnameOverride: ''
+    affinity: {}
     prometheus:
       enabled: false
       service:
         port: 8080
+    podSecurityContext: {}
+    extraArgs: {}
+    securityContext: {}
     rbac:
       create: true
-    requeueInterval: 5m
-    resources: {}
-    securityContext: {}
+    nameOverride: ''
     serviceAccount:
       annotations: {}
       create: true
       name: ''
+    image:
+      pullPolicy: IfNotPresent
+      repository: ghcr.io/external-secrets/external-secrets
+      tag: ''
+    create: true
     tolerations: []
-  concurrent: 1
-  controllerClass: ''
-  crds:
-    createClusterExternalSecret: true
-    createClusterSecretStore: true
+    extraEnv: []
+    priorityClassName: ''
+    deploymentAnnotations: {}
+    podAnnotations: {}
   createOperator: true
-  deploymentAnnotations: {}
-  extraArgs: {}
-  extraEnv: []
-  fullnameOverride: ''
-  image:
-    pullPolicy: IfNotPresent
-    repository: ghcr.io/external-secrets/external-secrets
-    tag: ''
-  imagePullSecrets: []
-  installCRDs: false
-  leaderElect: false
-  nameOverride: ''
   nodeSelector: {}
-  podAnnotations: {}
+  scopedRBAC: false
+  imagePullSecrets: []
   podLabels: {}
-  podSecurityContext: {}
-  priorityClassName: ''
+  resources: {}
+  leaderElect: false
+  fullnameOverride: ''
   processClusterExternalSecret: true
-  processClusterStore: true
+  affinity: {}
   prometheus:
     enabled: false
     service:
       port: 8080
+  podSecurityContext: {}
+  scopedNamespace: ''
+  extraArgs: {}
+  securityContext: {}
   rbac:
     create: true
-  replicaCount: 1
-  resources: {}
-  scopedNamespace: ''
-  scopedRBAC: false
-  securityContext: {}
-  serviceAccount:
-    annotations: {}
-    create: true
-    name: ''
-  tolerations: []
+  processClusterStore: true
+  concurrent: 1
   webhook:
+    nodeSelector: {}
+    imagePullSecrets: []
+    podLabels: {}
+    resources: {}
+    fullnameOverride: ''
     affinity: {}
     certCheckInterval: 5m
     certDir: /tmp/certs
-    create: true
-    deploymentAnnotations: {}
-    extraArgs: {}
-    extraEnv: []
-    fullnameOverride: ''
-    image:
-      pullPolicy: IfNotPresent
-      repository: ghcr.io/external-secrets/external-secrets
-      tag: ''
-    imagePullSecrets: []
-    nameOverride: ''
-    nodeSelector: {}
-    podAnnotations: {}
-    podLabels: {}
-    podSecurityContext: {}
-    priorityClassName: ''
     prometheus:
       enabled: false
       service:
         port: 8080
+    podSecurityContext: {}
+    extraArgs: {}
+    securityContext: {}
     rbac:
       create: true
     replicaCount: 1
-    resources: {}
-    securityContext: {}
+    nameOverride: ''
     serviceAccount:
       annotations: {}
       create: true
       name: ''
+    image:
+      pullPolicy: IfNotPresent
+      repository: ghcr.io/external-secrets/external-secrets
+      tag: ''
+    create: true
     tolerations: []
+    extraEnv: []
+    priorityClassName: ''
+    deploymentAnnotations: {}
+    podAnnotations: {}
+  replicaCount: 1
+  nameOverride: ''
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/audience: sts.amazonaws.com
+      eks.amazonaws.com/role-arn: arn:aws:iam::912144035479:role/eso-role
+      eks.amazonaws.com/sts-regional-endpoints: 'true'
+      eks.amazonaws.com/token-expiration: '86400'
+    create: true
+    name: ''
+  installCRDs: false
+  image:
+    pullPolicy: IfNotPresent
+    repository: ghcr.io/external-secrets/external-secrets
+    tag: ''
+  controllerClass: ''
+  tolerations: []
+  extraEnv: []
+  crds:
+    createClusterExternalSecret: true
+    createClusterSecretStore: true
+  priorityClassName: ''
+  deploymentAnnotations: {}
+  podAnnotations: {}
