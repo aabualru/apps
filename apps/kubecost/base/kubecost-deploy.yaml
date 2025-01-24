@@ -1599,7 +1599,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "4"
 spec:
-  host: costanalyzer-route-kubecost.apps.aabualrucummins.wbcq.p1.openshiftapps.com
   to:
     kind: Service
     name: costanalyzer-sample-cost-analyzer
